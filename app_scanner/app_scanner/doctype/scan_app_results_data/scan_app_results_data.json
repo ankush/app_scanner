@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-24 08:19:05.352761",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rule",
+  "code_snippet",
+  "message",
+  "file_path"
+ ],
+ "fields": [
+  {
+   "fieldname": "rule",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Rule"
+  },
+  {
+   "fieldname": "code_snippet",
+   "fieldtype": "Code",
+   "label": "Code Snippet"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message"
+  },
+  {
+   "fieldname": "file_path",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "File Path"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-02-24 08:26:50.244484",
+ "modified_by": "Administrator",
+ "module": "App Scanner",
+ "name": "Scan App Results Data",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

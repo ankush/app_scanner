@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-24 07:51:21.473626",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "directory",
+  "results"
+ ],
+ "fields": [
+  {
+   "fieldname": "directory",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Directory",
+   "reqd": 1
+  },
+  {
+   "fieldname": "results",
+   "fieldtype": "Table",
+   "label": "results",
+   "options": "Scan App Results Data"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-24 08:19:37.450581",
+ "modified_by": "Administrator",
+ "module": "App Scanner",
+ "name": "Scan Custom App",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

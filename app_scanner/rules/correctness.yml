@@ -1,0 +1,65 @@
+# This file specifies rules for correctness according to how frappe doctype data model works.
+
+rules:
+- id: frappe-manual-commit
+  patterns:
+    - pattern: frappe.db.commit()
+    - pattern-not-inside: |
+        try:
+          ...
+        except ...:
+          ...
+  message: |
+    Manually commiting a transaction is highly discouraged. Read about the transaction model implemented by Frappe Framework before adding manual commits: https://frappeframework.com/docs/user/en/api/database#database-transaction-model If you think manual commit is required then add a comment explaining why and `// nosemgrep` on the same line.
+  paths:
+      exclude:
+        - "**/patches/**"
+  languages: [python]
+  severity: ERROR
+
+- id: frappe-manual-rollback
+  patterns:
+    - pattern: frappe.db.rollback()
+    - pattern-not-inside: |
+        try:
+          ...
+        except ...:
+          ...
+  message: |
+    Manually rolling back a transaction is highly discouraged. Read about the transaction model implemented by Frappe Framework before adding manual commits: https://frappeframework.com/docs/user/en/api/database#database-transaction-model If you think manual commit is required then add a comment explaining why and `// nosemgrep` on the same line.
+  paths:
+      exclude:
+        - "**/patches/**"
+  languages: [python]
+  severity: ERROR
+
+- id: frappe-monkey-patching-not-allowed
+  patterns:
+    - pattern-either:
+      - pattern: |
+          from $X import $Y
+          ...
+          $Y.$PROPERTY = ...
+      - pattern: |
+          from $X import $Y
+          ...
+          $Y.$Z.$PROPERTY = ...
+      - pattern: |
+          from $X import $Y
+          ...
+          $Y.$Z.$F.$PROPERTY = ...
+      - pattern: |
+          from $X import $Y
+          ...
+          $Y.$Z.$F.$K.$PROPERTY = ...
+      - pattern: |
+          from $X import $Y
+          ...
+          $Y.$Z.$F.$K.$J.$PROPERTY = ...
+  message: |
+    $PROPERTY being monkey patched by app. Use hooks provided by framework instead of patching behaviour at runtime.
+  paths:
+      exclude:
+        - "**/patches/**"
+  languages: [python]
+  severity: INFO
